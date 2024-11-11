@@ -17,7 +17,7 @@
         "price": 190,
         "author": "Jane Smith",
         "description": "Trecrcok Hengack is a mystery novel that unravels the hidden secrets of an ancient kingdom. The protagonist, a determined explorer, stumbles upon clues that lead him into a web of danger, where trust and loyalty are put to the ultimate test.",
-        "status": "coming_soon"
+        "status": "trending"
     },
     {
         "id": "03",

@@ -64,7 +64,7 @@ module.exports = {
 		  primaryGreen: '#00D991',
 		  secondaryGreen: '#2EE0A533'
 		}
-	  }
+	  },
 	},
 	plugins: [require("tailwindcss-animate")],
   }

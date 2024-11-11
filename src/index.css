@@ -149,3 +149,70 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.4s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-in;
+}
+
+/* Tailwind custom CSS */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* For IE and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: pop 0.3s ease;
+}
+/* ডার্ক মোড */
+.dark {
+  background-color: #232725;
+  color: white;
+}
+
+/* লাইট মোড */
+.light {
+  background-color: #ffffff;
+  color: black;
+}
+
