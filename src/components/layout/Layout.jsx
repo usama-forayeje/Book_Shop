@@ -22,7 +22,7 @@ function Layout() {
     setShowDetails(true);
   };
   const closeShowDetails = () => setShowDetails(false);
-
+  const closeDialog = () => setIsDialogOpen(false);
 
   return (
     <div className="bg-[#171923] text-white min-h-screen">
@@ -54,12 +54,17 @@ function Layout() {
         <Footer />
 
         {/* Search Modal */}
-        <SearchModal isDialogOpen={isDialogOpen} closeDialog={() => setIsDialogOpen(false)}/>
+       <SearchModal 
+        isDialogOpen={isDialogOpen}
+        closeDialog={closeDialog}
+        openShowDetails={openShowDetails} 
+      />
 
         {/* Cart Modal */}
         <CartModal toggleTable={() => setShowTable(!showTable)} showTable={showTable} />
 
         {/* Details Modal */}
+        
         <DetailsModal
           closeShowDetails={closeShowDetails}
           showDetails={showDetails}

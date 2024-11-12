@@ -4,6 +4,7 @@ import { createContext,  useReducer,  } from "react";
 import { storeReducer, initialState } from "./reducer";
 
 
+
 export const StoreContext = createContext();
 
 export function StoreProvider({ children }) {

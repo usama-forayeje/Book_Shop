@@ -4,6 +4,7 @@ export const initialState = {
   searchQuery: "",
   filter: "",
   filteredBooks: [],
+  favorites: [], 
 };
 
 export function storeReducer(state, action) {
@@ -54,7 +55,6 @@ export function storeReducer(state, action) {
         ...state,
         filteredBooks: state.books.sort((a, b) => a.price - b.price),
       };
-    // নতুন ফিল্টার অ্যাকশন
     case "FILTER_BY_NEW_RELEASES":
       return {
         ...state,
@@ -72,7 +72,7 @@ export function storeReducer(state, action) {
     case "INCREASE_QUANTITY":
       return {
         ...state,
-        cart: state.cart.map((item) =>
+        cart: state.cart.map((item) => 
           item.id === action.payload
             ? { ...item, quantity: item.quantity ? item.quantity + 1 : 1 } // quantity যদি undefined বা NaN হয় তবে 1 সেট করা
             : item
@@ -93,12 +93,26 @@ export function storeReducer(state, action) {
     filteredBooks: state.books, // সব বই দেখাবে
   };
 
-case "FILTER_BY_FAVORITES":
+  case "FILTER_BY_FAVORITES":
   return {
     ...state,
-    filteredBooks: state.books.filter((book) => book.favorite), // শুধুমাত্র ফেভারিট বইগুলো দেখাবে
+    filteredBooks: state.books.filter(book => book.isFavorite),
   };
+  case "TOGGLE_FAVORITE":
+  const updatedBooks = state.books.map((book) =>
+    book.id === action.payload ? { ...book, isFavorite: !book.isFavorite } : book
+  );
+  
+  // Update filteredBooks as well to reflect isFavorite changes in the filtered list
+  const updatedFilteredBooks = state.filteredBooks.map((book) =>
+    book.id === action.payload ? { ...book, isFavorite: !book.isFavorite } : book
+  );
 
+  return {
+    ...state,
+    books: updatedBooks,
+    filteredBooks: updatedFilteredBooks,
+  };
     default:
       return state;
   }

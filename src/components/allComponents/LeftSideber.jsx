@@ -43,12 +43,12 @@ function LeftSideber({isLeftSidebarOpen ,handleClick, }) {
                 </div>
               </li>
               
-              <li className="text-gray-400 duration-300 rounded cursor-pointer hover:bg-primaryGreen hover:text-black">
-                <div className="flex items-center gap-1 px-3 py-1 rounded">
-                  <Heart />
-                  <p>Favorites</p>
-                </div>
-              </li>
+              <li onClick={() => dispatch({ type: "FILTER_BY_FAVORITES" })} className="text-gray-400 duration-300 rounded cursor-pointer hover:bg-primaryGreen hover:text-black">
+  <div className="flex items-center gap-1 px-3 py-1 rounded">
+    <Heart />
+    <p>Favorites</p>
+  </div>
+</li>
             </ul>
           </div>
     
