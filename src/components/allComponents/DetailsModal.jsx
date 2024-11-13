@@ -18,16 +18,16 @@ function DetailsModal({ closeShowDetails, showDetails, book, }) {
   return (
     <div>
       {showDetails && (
-        <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
-          <div className="relative w-[700px] p-8 bg-gray-900 rounded-lg shadow-lg">
+        <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full ">
+          <div className="relative w-[700px] p-8 bg-white dark:bg-gray-900  rounded-lg shadow-lg border border-gray-300">
             <div className="flex flex-row items-center justify-between">
               {/* Left Side Content */}
               <div className="w-3/4 h-full pl-8">
-                <h2 className="pt-6 text-3xl font-semibold text-white">
+                <h2 className="pt-6 text-3xl font-semibold ">
                   {book?.name}
                 </h2>
-                <p className="pt-2 text-sm text-gray-400">Comedy/Drama</p>
-                <p className="pt-5 pr-3 text-xs text-gray-300">
+                <p className="pt-2 text-sm ">Comedy/Drama</p>
+                <p className="pt-5 pr-3 text-xs">
                   {book?.description}
                 </p>
 

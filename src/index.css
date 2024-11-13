@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ... */
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 @layer base {
   :root {
 
@@ -206,13 +206,16 @@
 }
 /* ডার্ক মোড */
 .dark {
-  background-color: #232725;
+  background-color: #111827;
   color: white;
 }
 
 /* লাইট মোড */
 .light {
-  background-color: #ffffff;
+  background-color: #F9F9F9;
   color: black;
+}
+.p-auto {
+  padding: auto;
 }
 

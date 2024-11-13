@@ -7,7 +7,7 @@ import MainContent from "../allComponents/MainContent";
 import SearchModal from "../allComponents/SearchModal";
 import CartModal from "../allComponents/CartModal";
 import DetailsModal from "../allComponents/DetailsModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Layout() {
   const [isLeftSidebarOpen, setLeftSidebarOpen] = useState(false);
@@ -23,13 +23,28 @@ function Layout() {
   };
   const closeShowDetails = () => setShowDetails(false);
   const closeDialog = () => setIsDialogOpen(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+   // Dark mode class add korar jonno effect
+   useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className="bg-[#171923] text-white min-h-screen">
+    <div className={`min-h-screen ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="container px-1 mx-auto">
         
         {/* Header */}
         <Header
+        isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}
           toggleLeftSidebar={() => setLeftSidebarOpen(!isLeftSidebarOpen)}
           toggleRightSidebar={() => setRightSidebarOpen(!isRightSidebarOpen)}
           toggleTable={() => setShowTable(!showTable)}
