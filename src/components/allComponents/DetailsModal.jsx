@@ -19,7 +19,7 @@ function DetailsModal({ closeShowDetails, showDetails, book, }) {
     <div>
       {showDetails && (
         <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full ">
-          <div className="relative w-[700px] p-8 bg-white dark:bg-gray-900  rounded-lg shadow-lg border border-gray-300">
+          <div className="relative w-[700px] p-8 bg-white dark:bg-gray-900 sm:mx-1 rounded-lg shadow-lg border border-gray-300">
             <div className="flex flex-row items-center justify-between">
               {/* Left Side Content */}
               <div className="w-3/4 h-full pl-8">

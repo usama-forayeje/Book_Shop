@@ -13,15 +13,15 @@ function SearchModal({ isDialogOpen, closeDialog, openShowDetails }) {
 
   const handleBookClick = (book) => {
     openShowDetails(book);  // DetailsModal ওপেন করা
-    closeDialog();// বইটি কার্টে অ্যাড করা
+    closeDialog(); // বইটি কার্টে অ্যাড করা
   };
 
   return (
     <div>
       {isDialogOpen && (
-        <div className="fixed inset-0 dark:text-gray-400 text-[#3C3C43] z-50 flex items-center justify-center ">
+        <div className="fixed inset-0 dark:text-gray-400 text-[#3C3C43] z-50 flex items-center justify-center">
           <div
-            className="fixed inset-0 z-50 w-[40vw] h-[100vh] max-w-4xl max-h-[80vh] border-gray-700 border bg-white dark:bg-black p-6 shadow-lg sm:rounded-lg
+            className="fixed inset-0 z-50 w-full sm:w-[80vw] md:w-[50vw] lg:w-[40vw] h-[100vh] max-h-[80vh] border-gray-700 border bg-white dark:bg-black p-6 shadow-lg sm:rounded-lg
             top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
             <div className="sticky top-0 w-full bg-white dark:bg-black">

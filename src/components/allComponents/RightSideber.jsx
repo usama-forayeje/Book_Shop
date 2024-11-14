@@ -8,7 +8,7 @@ function RightSideber({ isRightSidebarOpen }) {
     <div
       className={`fixed right-0 lg:static z-10 lg:z-auto transition-transform transform ${
         isRightSidebarOpen ? "translate-x-0" : "translate-x-full"
-      } lg:translate-x-0 w-80 lg:w-1/5 md:h-full    border-l border-gray-700 p-6`}
+      } lg:translate-x-0 w-80 lg:w-1/5 h-full bg-white dark:bg-slate-900    border-l border-gray-700 p-6`}
     >
       <h3 className="mb-4 text-lg font-semibold">Filter On Page</h3>
       <ul className="space-y-1">
