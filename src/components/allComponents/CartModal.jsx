@@ -5,12 +5,12 @@ import { StoreContext } from "../../context/StoreContext";
 export default function CartModal({ showTable, toggleTable }) {
   const { state, dispatch } = useContext(StoreContext);
 
-  // Quantity increment function
+  // Function to increment the quantity of a book
   const incrementQuantity = (book) => {
     dispatch({ type: "INCREASE_QUANTITY", payload: book.id });
   };
 
-  // Quantity decrement function
+  // Function to decrement the quantity of a book (if quantity > 1)
   const decrementQuantity = (book) => {
     if (book.quantity > 1) {
       dispatch({ type: "DECREASE_QUANTITY", payload: book.id });
@@ -141,7 +141,7 @@ export default function CartModal({ showTable, toggleTable }) {
                 <div className="flex justify-between w-full px-6 mt-1 text-sm font-semibold text-gray-800 dark:text-white">
                   <p>Total</p>
                   <p>
-                    $
+                    $$
                     {state.cart
                       .reduce(
                         (total, item) => total + item.price * item.quantity,

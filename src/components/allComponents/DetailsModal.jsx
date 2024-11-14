@@ -2,36 +2,37 @@ import { Heart } from "lucide-react";
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 
-function DetailsModal({ closeShowDetails, showDetails, book, }) {
+function DetailsModal({ closeShowDetails, showDetails, book }) {
   const { state, dispatch } = useContext(StoreContext);
 
   // Check if the book is already in the cart
   const isInCart = state.cart.some((cartItem) => cartItem.id === book?.id);
 
+  // Toggle the like status of the book
   const toggleLike = (id) => {
     const updatedBooks = state.books.map((book) =>
       book?.id === id ? { ...book, liked: !book.liked } : book
     );
-    dispatch({ type: "SET_BOOKS", payload: updatedBooks }); // Update books with new liked status
+    dispatch({ type: "SET_BOOKS", payload: updatedBooks }); // Update books with the new liked status
   };
 
   return (
     <div>
       {showDetails && (
-        <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full ">
+        <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full">
           <div className="relative w-[700px] p-8 bg-white dark:bg-gray-900 sm:mx-1 rounded-lg shadow-lg border border-gray-300">
             <div className="flex flex-row items-center justify-between">
               {/* Left Side Content */}
               <div className="w-3/4 h-full pl-8">
-                <h2 className="pt-6 text-3xl font-semibold ">
-                  {book?.name}
-                </h2>
-                <p className="pt-2 text-sm ">Comedy/Drama</p>
-                <p className="pt-5 pr-3 text-xs">
-                  {book?.description}
-                </p>
+                {/* Book Title */}
+                <h2 className="pt-6 text-3xl font-semibold">{book?.name}</h2>
+                {/* Genre */}
+                <p className="pt-2 text-sm">Comedy/Drama</p>
+                {/* Book Description */}
+                <p className="pt-5 pr-3 text-xs">{book?.description}</p>
 
                 <div className="flex gap-4 pt-6">
+                  {/* Add to Cart Button */}
                   <button
                     onClick={() =>
                       dispatch({ type: "ADD_TO_CART", payload: book })
@@ -51,6 +52,7 @@ function DetailsModal({ closeShowDetails, showDetails, book, }) {
                     </span>
                   </button>
 
+                  {/* Like Button */}
                   <button
                     onClick={() => toggleLike(book.id)} // Toggle like on DetailsModal as well
                     className={`p-1 border rounded ${
@@ -64,6 +66,7 @@ function DetailsModal({ closeShowDetails, showDetails, book, }) {
                     />
                   </button>
 
+                  {/* Close Button */}
                   <button
                     onClick={closeShowDetails}
                     className="px-3 py-1 font-serif text-sm text-black transition-colors duration-200 bg-white border rounded"

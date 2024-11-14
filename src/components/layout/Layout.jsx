@@ -1,4 +1,3 @@
-
 import Header from "../allComponents/Header";
 import LeftSideber from "../allComponents/LeftSideber";
 import Footer from "../allComponents/Footer";
@@ -10,23 +9,26 @@ import DetailsModal from "../allComponents/DetailsModal";
 import { useEffect, useState } from "react";
 
 function Layout() {
-  const [isLeftSidebarOpen, setLeftSidebarOpen] = useState(false);
-  const [isRightSidebarOpen, setRightSidebarOpen] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [showTable, setShowTable] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null);
+  const [isLeftSidebarOpen, setLeftSidebarOpen] = useState(false); // Left sidebar state
+  const [isRightSidebarOpen, setRightSidebarOpen] = useState(false); // Right sidebar state
+  const [isDialogOpen, setIsDialogOpen] = useState(false); // Search modal state
+  const [showTable, setShowTable] = useState(false); // Cart table view state
+  const [showDetails, setShowDetails] = useState(false); // Details modal state
+  const [selectedBook, setSelectedBook] = useState(null); // Selected book for details modal
+
   // Modal Toggle Functions
   const openShowDetails = (book) => {
-    setSelectedBook(book); // বই সেট করা
-    setShowDetails(true);
+    setSelectedBook(book); // Set selected book
+    setShowDetails(true); // Open details modal
   };
-  const closeShowDetails = () => setShowDetails(false);
-  const closeDialog = () => setIsDialogOpen(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
-   // Dark mode class add korar jonno effect
-   useEffect(() => {
+  const closeShowDetails = () => setShowDetails(false); // Close details modal
+  const closeDialog = () => setIsDialogOpen(false); // Close search modal
+  
+  const [isDarkMode, setIsDarkMode] = useState(true); // Dark mode state
+
+  // Effect to add/remove dark class when dark mode toggles
+  useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -35,7 +37,7 @@ function Layout() {
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode(!isDarkMode); // Toggle dark mode state
   };
 
   return (
@@ -44,17 +46,18 @@ function Layout() {
         
         {/* Header */}
         <Header
-        isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
           toggleLeftSidebar={() => setLeftSidebarOpen(!isLeftSidebarOpen)}
           toggleRightSidebar={() => setRightSidebarOpen(!isRightSidebarOpen)}
           toggleTable={() => setShowTable(!showTable)}
         />
 
-        {/* {  Hero Section} */}
+        {/* Hero Section */}
         <div className="flex w-full">
           {/* Left Sidebar */}
           <LeftSideber
-            handleClick={() => setIsDialogOpen(true)}
+            handleClick={() => setIsDialogOpen(true)} // Open search modal when clicked
             isLeftSidebarOpen={isLeftSidebarOpen}
           />
 
@@ -69,17 +72,16 @@ function Layout() {
         <Footer />
 
         {/* Search Modal */}
-       <SearchModal 
-        isDialogOpen={isDialogOpen}
-        closeDialog={closeDialog}
-        openShowDetails={openShowDetails} 
-      />
+        <SearchModal 
+          isDialogOpen={isDialogOpen}
+          closeDialog={closeDialog}
+          openShowDetails={openShowDetails} 
+        />
 
         {/* Cart Modal */}
         <CartModal toggleTable={() => setShowTable(!showTable)} showTable={showTable} />
 
         {/* Details Modal */}
-        
         <DetailsModal
           closeShowDetails={closeShowDetails}
           showDetails={showDetails}
