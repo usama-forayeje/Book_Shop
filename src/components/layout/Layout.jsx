@@ -23,7 +23,7 @@ function Layout() {
   };
   const closeShowDetails = () => setShowDetails(false);
   const closeDialog = () => setIsDialogOpen(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
    // Dark mode class add korar jonno effect
    useEffect(() => {
