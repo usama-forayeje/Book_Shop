@@ -7,14 +7,10 @@ function DetailsModal({ closeShowDetails, showDetails, book }) {
 
   // Check if the book is already in the cart
   const isInCart = state.cart.some((cartItem) => cartItem.id === book?.id);
-
-  // Toggle the like status of the book
-  const toggleLike = (id) => {
-    const updatedBooks = state.books.map((book) =>
-      book?.id === id ? { ...book, liked: !book.liked } : book
-    );
-    dispatch({ type: "SET_BOOKS", payload: updatedBooks }); // Update books with the new liked status
+  const toggleFavorite = (id) => {
+    dispatch({ type: "TOGGLE_FAVORITE", payload: id });
   };
+ 
 
   return (
     <div>
@@ -27,7 +23,7 @@ function DetailsModal({ closeShowDetails, showDetails, book }) {
                 {/* Book Title */}
                 <h2 className="pt-6 text-3xl font-semibold">{book?.name}</h2>
                 {/* Genre */}
-                <p className="pt-2 text-sm">Comedy/Drama</p>
+                <p className="pt-2 text-sm">{book?.author}</p>
                 {/* Book Description */}
                 <p className="pt-5 pr-3 text-xs">{book?.description}</p>
 
@@ -52,20 +48,22 @@ function DetailsModal({ closeShowDetails, showDetails, book }) {
                     </span>
                   </button>
 
-                  {/* Like Button */}
+                  {/* Favorite Button */}
                   <button
-                    onClick={() => toggleLike(book.id)} // Toggle like on DetailsModal as well
-                    className={`p-1 border rounded ${
-                      book?.liked ? "text-red-500" : "text-primaryGreen"
-                    } hover:${book?.liked ? "text-red-600" : "text-green-500"}`}
+                    onClick={() => toggleFavorite(book.id)} // Toggle favorite on DetailsModal
+                    className={`relative p-1.5 border-2 rounded transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/40 active:scale-95 active:rotate-0 active:transition-transform active:duration-200 ${book.isFavorite ? "bg-gradient-to-r from-pink-400 to-red-500 text-white border-red-600 hover:from-red-500 hover:to-pink-600" : "bg-gradient-to-r from-green-400 to-green-600 text-white border-green-600 hover:from-green-500 hover:to-green-700"}`}
                   >
+                    {/* Animated background for favorite button */}
+                    <div
+                      className={`absolute inset-0 transition-all duration-400 ${book.isFavorite ? "bg-gradient-to-r from-pink-300 to-red-400 opacity-50" : "bg-gradient-to-r from-green-300 to-green-600 opacity-40"}`}
+                    ></div>
+                    {/* Heart icon with animation */}
                     <Heart
-                      size={20}
-                      fill={book?.liked ? "currentColor" : "none"}
-                      className={`${book?.liked ? "animate-pop" : ""}`}
+                      size={22}
+                      fill={book.isFavorite ? "currentColor" : "none"} // Changes icon color based on favorite status
+                      className="relative z-10 transition-all duration-300 transform hover:scale-125 active:scale-105 active:rotate-45"
                     />
                   </button>
-
                   {/* Close Button */}
                   <button
                     onClick={closeShowDetails}

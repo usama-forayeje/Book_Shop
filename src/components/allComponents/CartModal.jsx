@@ -37,7 +37,7 @@ export default function CartModal({ showTable, toggleTable }) {
               </div>
 
               {/* Cart Items */}
-              <div className="flex-grow mb-24 overflow-auto">
+              <div className="flex-grow overflow-auto scrollbar-hide">
                 <div className="w-full border-b">
                   <ul className="fixed grid w-full grid-cols-6 px-4 pb-2 border-gray-200 top-14 dark:border-gray-700">
                     <li className="col-span-2 text-sm font-medium">Product</li>
@@ -51,7 +51,7 @@ export default function CartModal({ showTable, toggleTable }) {
                   {state.cart.map((book, idx) => (
                     <div
                       key={idx}
-                      className="grid items-center grid-cols-6 px-4 py-2 my-1 border-b border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+                      className="grid items-center grid-cols-6 px-4 py-1.5 my-1 border-b border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
                     >
                       {/* Product Image and Title */}
                       <div className="flex items-center col-span-2 gap-2">
@@ -121,11 +121,11 @@ export default function CartModal({ showTable, toggleTable }) {
               </div>
 
               {/* Fixed Order Summary */}
-              <div className="absolute bottom-0 left-0 w-full py-2 bg-white border-t border-gray-200 shadow-xl dark:bg-black dark:border-gray-700">
+              <div className="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-xl dark:bg-black dark:border-gray-700">
                 <div className="flex justify-between w-full px-6 text-sm font-medium text-gray-800 dark:text-white">
                   <p>Subtotal</p>
                   <p>
-                    $$
+                    $
                     {state.cart
                       .reduce(
                         (total, item) => total + item.price * item.quantity,
@@ -141,7 +141,7 @@ export default function CartModal({ showTable, toggleTable }) {
                 <div className="flex justify-between w-full px-6 mt-1 text-sm font-semibold text-gray-800 dark:text-white">
                   <p>Total</p>
                   <p>
-                    $$
+                    $
                     {state.cart
                       .reduce(
                         (total, item) => total + item.price * item.quantity,
@@ -150,8 +150,8 @@ export default function CartModal({ showTable, toggleTable }) {
                       .toFixed(2)}
                   </p>
                 </div>
-                <div className="flex justify-center mt-2">
-                  <button className="px-6 py-3 text-lg font-semibold text-white transition-all duration-200 bg-green-500 rounded-lg hover:bg-green-600">
+                <div className="flex justify-center mt-1">
+                  <button className="px-6 py-2 text-lg font-semibold text-white transition-all duration-200 bg-green-500 rounded-lg hover:bg-green-600">
                     Checkout
                   </button>
                 </div>

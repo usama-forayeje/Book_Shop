@@ -83,7 +83,7 @@ function Header({
                 }}
               >
                 {/* Logo Text with Two-tone Effect */}
-                <h1 className="text-xl font-extrabold text-white drop-shadow-sm tracking-wide font-[Poppins]">
+                <h1 className="text-xl font-semibold tracking-wide text-white drop-shadow-sm ">
                   <span className="text-primaryGreen">Forayaje</span> <span className="text-yellow-500">Book Shop</span>
                 </h1>
               </motion.h1>
