@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 // src/context/StoreContext.js
 import { createContext, useReducer } from "react";
-import { storeReducer, initialState } from "./reducer";
+import { storeReducer, initialState } from "./Reducer";
 
 // Creating the context to provide the store state and dispatch function
 export const StoreContext = createContext();
