@@ -14,21 +14,24 @@ function Footer() {
         {/* Optional Social Links or Actions */}
         <div className="flex justify-center gap-6 mt-4">
           <a
-            href="#"
+            href="https://x.com/forayaje53234"
+            target="blank"
             aria-label="Follow Usama Forayaje on Twitter"
             className="text-gray-400 transition-colors duration-200 hover:text-blue-500"
           >
             Twitter
           </a>
           <a
-            href="#"
+            href="https://github.com/usama-forayeje"
+            target="blank"
             aria-label="Follow Usama Forayaje on GitHub"
             className="text-gray-400 transition-colors duration-200 hover:text-gray-300"
           >
             GitHub
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/usama-forayaje/"
+            target="blank"
             aria-label="Connect with Usama Forayaje on LinkedIn"
             className="text-gray-400 transition-colors duration-200 hover:text-blue-700"
           >
